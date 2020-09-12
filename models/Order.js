@@ -6,13 +6,9 @@ var OrderSchema = new mongoose.Schema({
         type: Types.ObjectId,
         ref: 'User',
     },
-    created_at: {
-        type: Date,
-        default: Date.now,
-    },
     status: {
         type: String,
-        enum: ['process', 'finish', 'cancel'],
+        enum: ['process', 'delivering', 'finish', 'cancel'],
         default: 'process',
     },
     product: {
@@ -27,6 +23,17 @@ var OrderSchema = new mongoose.Schema({
             type: Number,
         },
     },
+    detail: {
+        type: String,
+        default: ""
+    },
+    created_at: {
+        type: Date,
+        default: Date.now,
+    },,
+    updated_at: {
+        type: Date
+    }
 });
 
 module.exports = mongoose.model('Order', OrderSchema);
